@@ -31,9 +31,14 @@ public class Flow4GUI extends javax.swing.JFrame {
         questionPanel = new javax.swing.JPanel();
         addPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
-        danskTranslateLabel = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        addList = new javax.swing.JList();
+        danskAddLabel = new javax.swing.JLabel();
+        danskAddField = new javax.swing.JTextField();
+        engelskAddLabel = new javax.swing.JLabel();
+        engelskAddField = new javax.swing.JTextField();
+        wordAddButton = new javax.swing.JButton();
+        deleteAddButton = new javax.swing.JButton();
+        helpAddLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Language Trainer");
@@ -44,7 +49,7 @@ public class Flow4GUI extends javax.swing.JFrame {
         translatePanel.setLayout(translatePanelLayout);
         translatePanelLayout.setHorizontalGroup(
             translatePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 619, Short.MAX_VALUE)
+            .add(0, 640, Short.MAX_VALUE)
         );
         translatePanelLayout.setVerticalGroup(
             translatePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -57,7 +62,7 @@ public class Flow4GUI extends javax.swing.JFrame {
         questionPanel.setLayout(questionPanelLayout);
         questionPanelLayout.setHorizontalGroup(
             questionPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 619, Short.MAX_VALUE)
+            .add(0, 640, Short.MAX_VALUE)
         );
         questionPanelLayout.setVerticalGroup(
             questionPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -66,29 +71,59 @@ public class Flow4GUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Quizz", questionPanel);
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
+        addList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(addList);
 
-        danskTranslateLabel.setText("Dansk");
+        danskAddLabel.setText("Dansk");
 
-        jTextField1.setText("jTextField1");
+        danskAddField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                danskAddFieldActionPerformed(evt);
+            }
+        });
+
+        engelskAddLabel.setText("Engelsk");
+
+        wordAddButton.setText("Add Words");
+
+        deleteAddButton.setText("Delete Words");
+        deleteAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteAddButtonActionPerformed(evt);
+            }
+        });
+
+        helpAddLabel.setText("Help is here!");
 
         org.jdesktop.layout.GroupLayout addPanelLayout = new org.jdesktop.layout.GroupLayout(addPanel);
         addPanel.setLayout(addPanelLayout);
         addPanelLayout.setHorizontalGroup(
             addPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, addPanelLayout.createSequentialGroup()
+            .add(addPanelLayout.createSequentialGroup()
                 .add(addPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(addPanelLayout.createSequentialGroup()
+                        .add(addPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(danskAddField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 328, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(engelskAddField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 328, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(addPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .add(addPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(danskAddLabel)
+                                    .add(engelskAddLabel)))
+                            .add(wordAddButton))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(addPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(addPanelLayout.createSequentialGroup()
+                                .add(deleteAddButton)
+                                .add(0, 0, Short.MAX_VALUE))
+                            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)))
+                    .add(addPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .add(danskTranslateLabel))
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 256, Short.MAX_VALUE)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 294, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(helpAddLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         addPanelLayout.setVerticalGroup(
@@ -97,11 +132,21 @@ public class Flow4GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(addPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(addPanelLayout.createSequentialGroup()
-                        .add(danskTranslateLabel)
+                        .add(danskAddLabel)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(0, 0, Short.MAX_VALUE))
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE))
+                        .add(danskAddField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(18, 18, 18)
+                        .add(engelskAddLabel)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(engelskAddField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(18, 18, 18)
+                        .add(wordAddButton)
+                        .add(0, 192, Short.MAX_VALUE))
+                    .add(jScrollPane1))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(deleteAddButton)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(helpAddLabel)
                 .addContainerGap())
         );
 
@@ -120,6 +165,14 @@ public class Flow4GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void danskAddFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_danskAddFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_danskAddFieldActionPerformed
+
+    private void deleteAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAddButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteAddButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,13 +209,18 @@ public class Flow4GUI extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList addList;
     private javax.swing.JPanel addPanel;
-    private javax.swing.JLabel danskTranslateLabel;
-    private javax.swing.JList jList1;
+    private javax.swing.JTextField danskAddField;
+    private javax.swing.JLabel danskAddLabel;
+    private javax.swing.JButton deleteAddButton;
+    private javax.swing.JTextField engelskAddField;
+    private javax.swing.JLabel engelskAddLabel;
+    private javax.swing.JLabel helpAddLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel questionPanel;
     private javax.swing.JPanel translatePanel;
+    private javax.swing.JButton wordAddButton;
     // End of variables declaration//GEN-END:variables
 }
