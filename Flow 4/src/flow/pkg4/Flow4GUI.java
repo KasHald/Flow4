@@ -38,7 +38,6 @@ public class Flow4GUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Language Trainer");
         setMinimumSize(new java.awt.Dimension(200, 150));
-        setPreferredSize(new java.awt.Dimension(640, 480));
         setResizable(false);
 
         org.jdesktop.layout.GroupLayout translatePanelLayout = new org.jdesktop.layout.GroupLayout(translatePanel);
@@ -49,7 +48,7 @@ public class Flow4GUI extends javax.swing.JFrame {
         );
         translatePanelLayout.setVerticalGroup(
             translatePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 434, Short.MAX_VALUE)
+            .add(0, 444, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Translate", translatePanel);
@@ -62,7 +61,7 @@ public class Flow4GUI extends javax.swing.JFrame {
         );
         questionPanelLayout.setVerticalGroup(
             questionPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 434, Short.MAX_VALUE)
+            .add(0, 444, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Quizz", questionPanel);
@@ -88,7 +87,7 @@ public class Flow4GUI extends javax.swing.JFrame {
                         .addContainerGap()
                         .add(danskTranslateLabel))
                     .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 235, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 256, Short.MAX_VALUE)
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 294, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
