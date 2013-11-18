@@ -1,20 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package flow.pkg4;
 
-/**
- *
- * @author kaihultmann
- */
 public class Flow4GUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Flow4GUI
-     */
-    public Flow4GUI() {
+    private WordPairControlIF control;
+    
+    public Flow4GUI(WordPairControlIF control) {
         initComponents();
+        this.control = control;
+        initializeProgram();
     }
 
     /**
@@ -50,7 +43,7 @@ public class Flow4GUI extends javax.swing.JFrame {
         translatePanel.setLayout(translatePanelLayout);
         translatePanelLayout.setHorizontalGroup(
             translatePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 628, Short.MAX_VALUE)
+            .add(0, 640, Short.MAX_VALUE)
         );
         translatePanelLayout.setVerticalGroup(
             translatePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -63,7 +56,7 @@ public class Flow4GUI extends javax.swing.JFrame {
         questionPanel.setLayout(questionPanelLayout);
         questionPanelLayout.setHorizontalGroup(
             questionPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 628, Short.MAX_VALUE)
+            .add(0, 640, Short.MAX_VALUE)
         );
         questionPanelLayout.setVerticalGroup(
             questionPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -121,7 +114,7 @@ public class Flow4GUI extends javax.swing.JFrame {
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
                     .add(addPanelLayout.createSequentialGroup()
                         .add(counterAddLabel)
-                        .add(0, 57, Short.MAX_VALUE)))
+                        .add(0, 109, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         addPanelLayout.setVerticalGroup(
@@ -132,16 +125,16 @@ public class Flow4GUI extends javax.swing.JFrame {
                     .add(addPanelLayout.createSequentialGroup()
                         .add(danskAddLabel)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(danskAddField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(danskAddField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(18, 18, 18)
                         .add(engelskAddLabel)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(engelskAddField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(18, 18, 18)
+                        .add(engelskAddField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(19, 19, 19)
                         .add(addPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(wordAddButton)
                             .add(deleteAddButton))
-                        .add(0, 193, Short.MAX_VALUE))
+                        .add(0, 205, Short.MAX_VALUE))
                     .add(jScrollPane1))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(counterAddLabel)
@@ -164,7 +157,7 @@ public class Flow4GUI extends javax.swing.JFrame {
                         .addContainerGap())
                     .add(layout.createSequentialGroup()
                         .add(helpAddLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 257, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(73, 398, Short.MAX_VALUE))))
+                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -187,40 +180,14 @@ public class Flow4GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteAddButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Flow4GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Flow4GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Flow4GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Flow4GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Flow4GUI().setVisible(true);
-            }
-        });
+    
+    
+    private void initializeProgram(){
+        control.load();
+        counterAddLabel.setText(control.size() + " ord");
     }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList addList;
     private javax.swing.JPanel addPanel;
