@@ -18,17 +18,25 @@ public class WordPairControl implements WordPairControlIF {
 
     @Override
     public void add(String question, String answer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String[] temp = {question, answer};
+        wordList.add(temp);
     }
 
     @Override
     public boolean delete(String question) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (int x = 0; x < wordList.size(); x++){
+            String[] temp = wordList.get(x);
+            if (temp[0].equals(question)){
+                wordList.remove(x);
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return wordList.size();
     }
 
     @Override
