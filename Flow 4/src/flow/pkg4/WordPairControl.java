@@ -57,7 +57,7 @@ public class WordPairControl implements WordPairControlIF {
     @Override
     public boolean load() {
         strBuilder.append(System.getProperty("user.dir"));
-        strBuilder.append("/wordlist");
+        strBuilder.append("\\wordlist");
         String dir = strBuilder.toString();
         File file;
         try {
@@ -68,11 +68,12 @@ public class WordPairControl implements WordPairControlIF {
             } else {
                 this.path = dir;
             }
+            System.out.println(path);
             return buildList();
         } catch (Exception e) {
         }
         try {
-            strBuilder.append("/wordlist.txt");
+            strBuilder.append("\\wordlist.txt");
             file = new File(strBuilder.toString());
             file.createNewFile();
             this.path = strBuilder.toString();
@@ -97,7 +98,11 @@ public class WordPairControl implements WordPairControlIF {
         } catch (Exception e) {
             return false;
         }
-    } 
+    }
+    
+    public ArrayList<String[]> getList(){
+        return wordList;
+    }
 
     @Override
     public boolean save() {
