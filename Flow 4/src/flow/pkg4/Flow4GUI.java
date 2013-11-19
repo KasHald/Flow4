@@ -1,5 +1,7 @@
 package flow.pkg4;
 
+import java.awt.Color;
+
 public class Flow4GUI extends javax.swing.JFrame {
 
     private WordPairControlIF control;
@@ -28,6 +30,14 @@ public class Flow4GUI extends javax.swing.JFrame {
         danskTranslateButton = new javax.swing.JButton();
         engelskTranslateButton = new javax.swing.JButton();
         questionPanel = new javax.swing.JPanel();
+        explainQuizLabel = new javax.swing.JLabel();
+        questionQuizButton = new javax.swing.JButton();
+        word1QuizLabel = new javax.swing.JLabel();
+        word2QuizLabel = new javax.swing.JLabel();
+        guessQuizField = new javax.swing.JTextField();
+        guess1QuizLabel = new javax.swing.JLabel();
+        guess2QuizLabel = new javax.swing.JLabel();
+        guessQuizButton = new javax.swing.JButton();
         addPanel = new javax.swing.JPanel();
         danskAddLabel = new javax.swing.JLabel();
         danskAddField = new javax.swing.JTextField();
@@ -100,18 +110,73 @@ public class Flow4GUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Translate", translatePanel);
 
+        explainQuizLabel.setText("Can you guess the danish equivalent of the word?");
+
+        questionQuizButton.setText("New Question");
+        questionQuizButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                questionQuizButtonActionPerformed(evt);
+            }
+        });
+
+        word1QuizLabel.setText("The Word:");
+
+        guess1QuizLabel.setText("Were you correct?");
+
+        guessQuizButton.setText("Make quess");
+        guessQuizButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guessQuizButtonActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout questionPanelLayout = new org.jdesktop.layout.GroupLayout(questionPanel);
         questionPanel.setLayout(questionPanelLayout);
         questionPanelLayout.setHorizontalGroup(
             questionPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 615, Short.MAX_VALUE)
+            .add(questionPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(questionPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(guessQuizField)
+                    .add(questionPanelLayout.createSequentialGroup()
+                        .add(questionPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(explainQuizLabel)
+                            .add(questionQuizButton)
+                            .add(guessQuizButton))
+                        .add(0, 354, Short.MAX_VALUE))
+                    .add(questionPanelLayout.createSequentialGroup()
+                        .add(guess1QuizLabel)
+                        .add(18, 18, 18)
+                        .add(guess2QuizLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(questionPanelLayout.createSequentialGroup()
+                        .add(word1QuizLabel)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(word2QuizLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         questionPanelLayout.setVerticalGroup(
             questionPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 405, Short.MAX_VALUE)
+            .add(questionPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(explainQuizLabel)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(questionQuizButton)
+                .add(18, 18, 18)
+                .add(questionPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(word1QuizLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(word2QuizLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(guessQuizField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(guessQuizButton)
+                .add(18, 18, 18)
+                .add(questionPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(guess1QuizLabel)
+                    .add(guess2QuizLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Quizz", questionPanel);
+        jTabbedPane1.addTab("Quiz", questionPanel);
 
         danskAddLabel.setText("Danish");
 
@@ -254,6 +319,25 @@ public class Flow4GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_engelskTranslateButtonActionPerformed
 
+    private void questionQuizButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_questionQuizButtonActionPerformed
+        String add = control.getRandomQuestion();
+        if (add != null){
+            word2QuizLabel.setText(add);
+        } else {
+            helpGlobalLabel.setText("No words could be found in the list.");
+        }
+    }//GEN-LAST:event_questionQuizButtonActionPerformed
+
+    private void guessQuizButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guessQuizButtonActionPerformed
+        if (control.checkGuess(word2QuizLabel.getText(), guessQuizField.getText())){
+            guess2QuizLabel.setForeground(Color.green);
+            guess2QuizLabel.setText("Correct!");
+        } else {
+            guess2QuizLabel.setForeground(Color.red);
+            guess2QuizLabel.setText("Wrong!");
+        }
+    }//GEN-LAST:event_guessQuizButtonActionPerformed
+
     private void initializeProgram(){
         if(control.load()){
             helpGlobalLabel.setText("List found and loaded.");
@@ -277,10 +361,18 @@ public class Flow4GUI extends javax.swing.JFrame {
     private javax.swing.JButton engelskTranslateButton;
     private javax.swing.JTextField engelskTranslateField;
     private javax.swing.JLabel engelskTranslateLabel;
+    private javax.swing.JLabel explainQuizLabel;
+    private javax.swing.JLabel guess1QuizLabel;
+    private javax.swing.JLabel guess2QuizLabel;
+    private javax.swing.JButton guessQuizButton;
+    private javax.swing.JTextField guessQuizField;
     private javax.swing.JLabel helpGlobalLabel;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel questionPanel;
+    private javax.swing.JButton questionQuizButton;
     private javax.swing.JPanel translatePanel;
+    private javax.swing.JLabel word1QuizLabel;
+    private javax.swing.JLabel word2QuizLabel;
     private javax.swing.JButton wordAddButton;
     // End of variables declaration//GEN-END:variables
 }

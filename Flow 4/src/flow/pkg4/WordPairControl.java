@@ -41,12 +41,22 @@ public class WordPairControl implements WordPairControlIF {
 
     @Override
     public String getRandomQuestion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (wordList.size() > 0){
+            String[] temp = wordList.get(r.nextInt(wordList.size()));
+            return temp[1];
+        }
+        return null;
     }
 
     @Override
     public boolean checkGuess(String question, String quess) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (int x = 0; x < wordList.size(); x++){
+            String[] temp = wordList.get(x);
+            if (temp[1].equals(question) && temp[0].equals(quess)){
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -67,8 +77,8 @@ public class WordPairControl implements WordPairControlIF {
         try {
             wordList = new ArrayList();
             s = new Scanner(new File("wordlist.txt"));
-            while (s.hasNext()) {
-                String tmp = s.nextLine();
+            while (s.hasNextLine()) {
+                String tmp = s.next();
                 String[] words = tmp.split(",");
                 wordList.add(words);
             }
