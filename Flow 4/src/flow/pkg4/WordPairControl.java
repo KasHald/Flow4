@@ -9,12 +9,12 @@ import java.util.Scanner;
 
 public class WordPairControl implements WordPairControlIF {
     
+//    private static StringBuilder strBuilder = new StringBuilder();
     private static PrintWriter pw;
-    private static StringBuilder strBuilder = new StringBuilder();
     private static Random r = new Random();
     private static Scanner s;
     private static ArrayList<String[]> wordList = new ArrayList<>();
-    private String path;
+//    private String path;
 
     @Override
     public void add(String question, String answer) {
@@ -51,7 +51,15 @@ public class WordPairControl implements WordPairControlIF {
 
     @Override
     public String lookup(String question) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       for (int x = 0; x < wordList.size();x++){
+           String[] temp = wordList.get(x);
+           if (question.equals(temp[0])){
+               return temp[1];
+           } else if (question.equals(temp[1])){
+               return temp[0];
+           }
+       }
+        return null;
     }
 
     @Override
@@ -125,7 +133,9 @@ public class WordPairControl implements WordPairControlIF {
             for (int x = 0; x < wordList.size(); ++x) {
                 String[] temp = wordList.get(x);
                 pw.write(temp[0] + "," + temp[1]);
-                pw.println("\n");
+                if (x != wordList.size() - 1){
+                    pw.println("\n");
+                }
             }
             pw.close();
             return true;

@@ -1,8 +1,5 @@
+mand,guy
 hest,horse
-
-bord,table
-
-pingvin,penguin
-
-bakterie,germ
-
+bord,tabel
+suk,sigh
+sand,sand

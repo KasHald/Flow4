@@ -21,6 +21,12 @@ public class Flow4GUI extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         translatePanel = new javax.swing.JPanel();
+        danskTranslateLabel = new javax.swing.JLabel();
+        danskTranslateField = new javax.swing.JTextField();
+        engelskTranslateLabel = new javax.swing.JLabel();
+        engelskTranslateField = new javax.swing.JTextField();
+        danskTranslateButton = new javax.swing.JButton();
+        engelskTranslateButton = new javax.swing.JButton();
         questionPanel = new javax.swing.JPanel();
         addPanel = new javax.swing.JPanel();
         danskAddLabel = new javax.swing.JLabel();
@@ -30,22 +36,66 @@ public class Flow4GUI extends javax.swing.JFrame {
         wordAddButton = new javax.swing.JButton();
         deleteAddButton = new javax.swing.JButton();
         counterAddLabel = new javax.swing.JLabel();
-        helpAddLabel = new javax.swing.JLabel();
+        helpGlobalLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Language Trainer");
         setMinimumSize(new java.awt.Dimension(200, 150));
+        setPreferredSize(new java.awt.Dimension(640, 480));
         setResizable(false);
+
+        danskTranslateLabel.setText("Danish");
+
+        engelskTranslateLabel.setText("English");
+
+        danskTranslateButton.setText("Translate");
+        danskTranslateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                danskTranslateButtonActionPerformed(evt);
+            }
+        });
+
+        engelskTranslateButton.setText("Translate");
+        engelskTranslateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                engelskTranslateButtonActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout translatePanelLayout = new org.jdesktop.layout.GroupLayout(translatePanel);
         translatePanel.setLayout(translatePanelLayout);
         translatePanelLayout.setHorizontalGroup(
             translatePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 615, Short.MAX_VALUE)
+            .add(translatePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(translatePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(danskTranslateField)
+                    .add(engelskTranslateField)
+                    .add(translatePanelLayout.createSequentialGroup()
+                        .add(translatePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(danskTranslateLabel)
+                            .add(danskTranslateButton)
+                            .add(engelskTranslateLabel)
+                            .add(engelskTranslateButton))
+                        .add(0, 518, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         translatePanelLayout.setVerticalGroup(
             translatePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 405, Short.MAX_VALUE)
+            .add(translatePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(danskTranslateLabel)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(danskTranslateField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(danskTranslateButton)
+                .add(18, 18, 18)
+                .add(engelskTranslateLabel)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(engelskTranslateField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(engelskTranslateButton)
+                .addContainerGap(218, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Translate", translatePanel);
@@ -63,7 +113,7 @@ public class Flow4GUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Quizz", questionPanel);
 
-        danskAddLabel.setText("Dansk");
+        danskAddLabel.setText("Danish");
 
         danskAddField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,7 +121,7 @@ public class Flow4GUI extends javax.swing.JFrame {
             }
         });
 
-        engelskAddLabel.setText("Engelsk");
+        engelskAddLabel.setText("English");
 
         wordAddButton.setText("Add Words");
         wordAddButton.addActionListener(new java.awt.event.ActionListener() {
@@ -119,20 +169,20 @@ public class Flow4GUI extends javax.swing.JFrame {
                 .add(danskAddField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(18, 18, 18)
                 .add(engelskAddLabel)
-                .add(18, 18, 18)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(engelskAddField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(19, 19, 19)
+                .add(18, 18, 18)
                 .add(addPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(wordAddButton)
                     .add(deleteAddButton))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 212, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 220, Short.MAX_VALUE)
                 .add(counterAddLabel)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Add Word", addPanel);
 
-        helpAddLabel.setText("Help is here!");
+        helpGlobalLabel.setText("Help is here!");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,16 +195,16 @@ public class Flow4GUI extends javax.swing.JFrame {
                         .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addContainerGap())
                     .add(layout.createSequentialGroup()
-                        .add(helpAddLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 257, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(73, 373, Short.MAX_VALUE))))
+                        .add(helpGlobalLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 257, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                .add(jTabbedPane1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(helpAddLabel)
+                .add(helpGlobalLabel)
                 .addContainerGap())
         );
 
@@ -167,32 +217,50 @@ public class Flow4GUI extends javax.swing.JFrame {
 
     private void deleteAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAddButtonActionPerformed
         if(control.delete(danskAddField.getText())){
-            helpAddLabel.setText("'" + danskAddField.getText() + "' er blevet fjernet fra listen over ord.");
+            helpGlobalLabel.setText("'" + danskAddField.getText() + "' has been removed from the list of words.");
             danskAddField.setText("");
             engelskAddField.setText("");
-            counterAddLabel.setText(control.size() + " ord");
+            counterAddLabel.setText(control.size() + " words");
             control.save();
         } else {
-            helpAddLabel.setText("'" + danskAddField.getText() + "' kunne ikke findes på listen over ord.");
+            helpGlobalLabel.setText("'" + danskAddField.getText() + "' could not be found on the list of words.");
         }
     }//GEN-LAST:event_deleteAddButtonActionPerformed
 
     private void wordAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wordAddButtonActionPerformed
         control.add(danskAddField.getText(), engelskAddField.getText());
-        helpAddLabel.setText("'" + danskAddField.getText() + "' tilføjet til listen over ord.");
+        helpGlobalLabel.setText("'" + danskAddField.getText() + "' has been added to the list of words.");
         danskAddField.setText("");
         engelskAddField.setText("");
-        counterAddLabel.setText(control.size() + " ord");
+        counterAddLabel.setText(control.size() + " words");
         control.save();
     }//GEN-LAST:event_wordAddButtonActionPerformed
 
+    private void danskTranslateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_danskTranslateButtonActionPerformed
+        String test = control.lookup(danskTranslateField.getText());
+        if (test != null){
+            engelskTranslateField.setText(test);
+        } else {
+            helpGlobalLabel.setText("'" + danskTranslateField.getText() + "' could not be found on the list of words.");
+        }
+    }//GEN-LAST:event_danskTranslateButtonActionPerformed
+
+    private void engelskTranslateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engelskTranslateButtonActionPerformed
+        String test = control.lookup(engelskTranslateField.getText());
+        if (test != null){
+            danskTranslateField.setText(test);
+        } else {
+            helpGlobalLabel.setText("'" + engelskTranslateField.getText() + "' could not be found on the list of words.");
+        }
+    }//GEN-LAST:event_engelskTranslateButtonActionPerformed
+
     private void initializeProgram(){
         if(control.load()){
-            helpAddLabel.setText("Liste fundet og loaded.");
+            helpGlobalLabel.setText("List found and loaded.");
         } else {
-            helpAddLabel.setText("Kunne ikke loade en liste.");
+            helpGlobalLabel.setText("Could not find list.");
         }
-        counterAddLabel.setText(control.size() + " ord");
+        counterAddLabel.setText(control.size() + " words");
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -200,10 +268,16 @@ public class Flow4GUI extends javax.swing.JFrame {
     private javax.swing.JLabel counterAddLabel;
     private javax.swing.JTextField danskAddField;
     private javax.swing.JLabel danskAddLabel;
+    private javax.swing.JButton danskTranslateButton;
+    private javax.swing.JTextField danskTranslateField;
+    private javax.swing.JLabel danskTranslateLabel;
     private javax.swing.JButton deleteAddButton;
     private javax.swing.JTextField engelskAddField;
     private javax.swing.JLabel engelskAddLabel;
-    private javax.swing.JLabel helpAddLabel;
+    private javax.swing.JButton engelskTranslateButton;
+    private javax.swing.JTextField engelskTranslateField;
+    private javax.swing.JLabel engelskTranslateLabel;
+    private javax.swing.JLabel helpGlobalLabel;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel questionPanel;
     private javax.swing.JPanel translatePanel;
