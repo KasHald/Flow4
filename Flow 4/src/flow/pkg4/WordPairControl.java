@@ -56,37 +56,9 @@ public class WordPairControl implements WordPairControlIF {
 
     @Override
     public boolean load() {
-        strBuilder.append(System.getProperty("user.dir"));
-        strBuilder.append("\\wordlist");
-        String dir = strBuilder.toString();
-        File file;
-        try {
-            file = new File(dir);
-            if (!file.exists()) {
-                file.mkdir();
-                this.path = dir;
-            } else {
-                this.path = dir;
-            }
-            System.out.println(path);
-            return buildList();
-        } catch (Exception e) {
-        }
-        try {
-            strBuilder.append("\\wordlist.txt");
-            file = new File(strBuilder.toString());
-            file.createNewFile();
-            this.path = strBuilder.toString();
-            return buildList();
-        } catch (Exception e) {
-            return false;
-        }
-    }
-    
-    private boolean buildList(){
         try {
             wordList = new ArrayList();
-            s = new Scanner(new File(path));
+            s = new Scanner(new File("wordlist.txt"));
             while (s.hasNext()) {
                 String tmp = s.nextLine();
                 String[] words = tmp.split(",");
@@ -98,7 +70,49 @@ public class WordPairControl implements WordPairControlIF {
         } catch (Exception e) {
             return false;
         }
+//        strBuilder.append(System.getProperty("user.dir"));
+//        strBuilder.append("\\wordlist");
+//        String dir = strBuilder.toString();
+//        File file;
+//        try {
+//            file = new File(dir);
+//            if (!file.exists()) {
+//                file.mkdir();
+//                this.path = dir;
+//            } else {
+//                this.path = dir;
+//            }
+//            System.out.println(path);
+//            return buildList();
+//        } catch (Exception e) {
+//        }
+//        try {
+//            strBuilder.append("\\wordlist.txt");
+//            file = new File(strBuilder.toString());
+//            file.createNewFile();
+//            this.path = strBuilder.toString();
+//            return buildList();
+//        } catch (Exception e) {
+//            return false;
+//        }
     }
+    
+//    private boolean buildList(){
+//        try {
+//            wordList = new ArrayList();
+//            s = new Scanner(new File("wordlist.txt"));
+//            while (s.hasNext()) {
+//                String tmp = s.nextLine();
+//                String[] words = tmp.split(",");
+//                wordList.add(words);
+//            }
+//            return true;
+//        } catch (FileNotFoundException ex) {
+//            return false;
+//        } catch (Exception e) {
+//            return false;
+//        }
+//    }
     
     public ArrayList<String[]> getList(){
         return wordList;
@@ -107,7 +121,7 @@ public class WordPairControl implements WordPairControlIF {
     @Override
     public boolean save() {
         try {
-            pw = new PrintWriter(path);
+            pw = new PrintWriter("wordlist.txt");
             for (int x = 0; x < wordList.size(); ++x) {
                 String[] temp = wordList.get(x);
                 pw.write(temp[0] + "," + temp[1]);

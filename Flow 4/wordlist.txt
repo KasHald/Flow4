@@ -1,4 +1,8 @@
-bil,car
 hest,horse
+
 bord,table
+
 pingvin,penguin
+
+bakterie,germ
+

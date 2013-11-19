@@ -171,6 +171,7 @@ public class Flow4GUI extends javax.swing.JFrame {
             danskAddField.setText("");
             engelskAddField.setText("");
             counterAddLabel.setText(control.size() + " ord");
+            control.save();
         } else {
             helpAddLabel.setText("'" + danskAddField.getText() + "' kunne ikke findes på listen over ord.");
         }
@@ -182,6 +183,7 @@ public class Flow4GUI extends javax.swing.JFrame {
         danskAddField.setText("");
         engelskAddField.setText("");
         counterAddLabel.setText(control.size() + " ord");
+        control.save();
     }//GEN-LAST:event_wordAddButtonActionPerformed
 
     private void initializeProgram(){
