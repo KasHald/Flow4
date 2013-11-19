@@ -4,8 +4,8 @@ bord,tabel
 suk,sigh
 sand,sand
 salt,salt
-tråd,thread
 fugl,bird
 smil,smile
 stol,chair
 pude,pillow
+pistol,pistol
