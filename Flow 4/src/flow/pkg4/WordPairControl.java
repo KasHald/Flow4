@@ -26,7 +26,7 @@ public class WordPairControl implements WordPairControlIF {
     public boolean delete(String question) {
         for (int x = 0; x < wordList.size(); x++){
             String[] temp = wordList.get(x);
-            if (temp[0].equals(question)){
+            if (temp[0].equalsIgnoreCase(question)){
                 wordList.remove(x);
                 return true;
             }
@@ -52,7 +52,7 @@ public class WordPairControl implements WordPairControlIF {
     public boolean checkGuess(String question, String quess) {
         for (int x = 0; x < wordList.size(); x++){
             String[] temp = wordList.get(x);
-            if (temp[1].equals(question) && temp[0].equals(quess)){
+            if (temp[1].equalsIgnoreCase(question) && temp[0].equalsIgnoreCase(quess)){
                 return true;
             }
         }
@@ -63,9 +63,9 @@ public class WordPairControl implements WordPairControlIF {
     public String lookup(String question) {
        for (int x = 0; x < wordList.size();x++){
            String[] temp = wordList.get(x);
-           if (question.equals(temp[0])){
+           if (question.equalsIgnoreCase(temp[0])){
                return temp[1];
-           } else if (question.equals(temp[1])){
+           } else if (question.equalsIgnoreCase(temp[1])){
                return temp[0];
            }
        }

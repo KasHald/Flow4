@@ -20,4 +20,8 @@ pude,pillow
 
 pistol,pistol
 
+<<<<<<< HEAD
 Hej,Hey
+=======
+dansker,danish person
+>>>>>>> 1.0.0

@@ -234,6 +234,9 @@
             <Component class="javax.swing.JLabel" name="word2QuizLabel">
             </Component>
             <Component class="javax.swing.JTextField" name="guessQuizField">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="guessQuizFieldKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="guess1QuizLabel">
               <Properties>
@@ -272,16 +275,18 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="danskAddLabel" min="-2" max="-2" attributes="0"/>
                                   <Component id="engelskAddLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="wordAddButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="deleteAddButton" min="-2" max="-2" attributes="0"/>
-                                  </Group>
                                   <Component id="counterAddLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="395" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="418" max="32767" attributes="0"/>
                           </Group>
                           <Component id="danskAddField" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="wordAddButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="deleteAddButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="clearAddButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -302,6 +307,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="wordAddButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="deleteAddButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="clearAddButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="220" max="32767" attributes="0"/>
                       <Component id="counterAddLabel" min="-2" max="-2" attributes="0"/>
@@ -348,6 +354,14 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Kan du se det her, er der noget galt."/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="clearAddButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Delete All Words"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearAddButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
