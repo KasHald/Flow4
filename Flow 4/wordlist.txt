@@ -1,27 +1,11 @@
 mand,man
-
 hest,horse
-
 bord,tabel
-
 suk,sigh
-
 sand,sand
-
 salt,salt
-
 fugl,bird
-
 smil,smile
-
 stol,chair
-
 pude,pillow
-
 pistol,pistol
-
-<<<<<<< HEAD
-Hej,Hey
-=======
-dansker,danish person
->>>>>>> 1.0.0

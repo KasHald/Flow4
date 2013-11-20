@@ -125,8 +125,8 @@ public class Flow4GUI extends javax.swing.JFrame {
         word1QuizLabel.setText("The Word:");
 
         guessQuizField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                guessQuizFieldKeyTyped(evt);
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                guessQuizFieldKeyPressed(evt);
             }
         });
 
@@ -233,13 +233,13 @@ public class Flow4GUI extends javax.swing.JFrame {
                             .add(danskAddLabel)
                             .add(engelskAddLabel)
                             .add(counterAddLabel))
-                        .add(0, 418, Short.MAX_VALUE))
+                        .add(0, 0, Short.MAX_VALUE))
                     .add(danskAddField)
                     .add(addPanelLayout.createSequentialGroup()
                         .add(wordAddButton)
                         .add(18, 18, 18)
                         .add(deleteAddButton)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 284, Short.MAX_VALUE)
                         .add(clearAddButton)))
                 .addContainerGap())
         );
@@ -276,7 +276,7 @@ public class Flow4GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
                         .addContainerGap())
                     .add(layout.createSequentialGroup()
                         .add(helpGlobalLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 257, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -342,6 +342,8 @@ public class Flow4GUI extends javax.swing.JFrame {
         String add = control.getRandomQuestion();
         if (add != null){
             word2QuizLabel.setText(add);
+            guess2QuizLabel.setText("");
+            guessQuizField.setText("");
         } else {
             helpGlobalLabel.setText("No words could be found in the list.");
         }
@@ -351,22 +353,20 @@ public class Flow4GUI extends javax.swing.JFrame {
         makeAGuess();
     }//GEN-LAST:event_guessQuizButtonActionPerformed
 
-    private void guessQuizFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_guessQuizFieldKeyTyped
-        System.out.println("Key Typed: " + evt.getKeyCode());
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
-            makeAGuess();
-            System.out.println("test2");
-        }
-    }//GEN-LAST:event_guessQuizFieldKeyTyped
-
     private void clearAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearAddButtonActionPerformed
         JOptionPane optionPane = new JOptionPane(
-        "Are you sure you wisg to delte the entire list?",
+        "Are you sure you wish to delte the entire list?",
         JOptionPane.QUESTION_MESSAGE,
         JOptionPane.YES_NO_OPTION);
         
         
     }//GEN-LAST:event_clearAddButtonActionPerformed
+
+    private void guessQuizFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_guessQuizFieldKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            makeAGuess();
+        }
+    }//GEN-LAST:event_guessQuizFieldKeyPressed
 
     private void makeAGuess(){
         if (control.checkGuess(word2QuizLabel.getText(), guessQuizField.getText())){
